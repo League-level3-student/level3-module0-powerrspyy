@@ -32,7 +32,7 @@ public class _02_2DArrayPractice {
      */
     public Integer[][] test1() {
         
-        return null;
+        return new Integer[3][3];
     }
     
     /*
@@ -42,7 +42,7 @@ public class _02_2DArrayPractice {
      */
     public String[][] test2() {
         
-        return null;
+        return new String[2][4];
     }
     
     /*
@@ -55,7 +55,7 @@ public class _02_2DArrayPractice {
      */
     public Boolean[][] test3() {
         
-        return null;
+        return new Boolean[5][2];
     }
     
     /*
@@ -86,8 +86,7 @@ public class _02_2DArrayPractice {
      */
     public Object test4() {
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
-        
-        return null;
+        return objects[1][3];
     }
     
     /* Given the array of Objects below, return the element that is not null
@@ -96,8 +95,7 @@ public class _02_2DArrayPractice {
      */
     public Object test5() {
         Object[][] objects = { {null, null, new Object(), null}, {null, null, null, null} };
-        
-        return null;
+        return objects[0][2];
     }
     
     /*
@@ -106,9 +104,12 @@ public class _02_2DArrayPractice {
      */
     public Integer test6() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
-    }
+        int sum = 0;
+        for(int i=0; i < nums[0].length; i++) {
+        	sum += nums[0][i];
+        }
+        return sum;
+     }
     
     /*
      * Write an algorithm to return the sum of all the numbers in the
@@ -116,8 +117,11 @@ public class _02_2DArrayPractice {
      */
     public Integer test7() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        int sum = 0;
+        for(int i=0; i < nums.length; i++) {
+        	sum += nums[i][0];
+        }
+        return sum;
     }
     
     /*
@@ -126,7 +130,11 @@ public class _02_2DArrayPractice {
      */
     public Integer getSumByRow(int[][] matrix, int row) {
         
-        return null;
+    	int sum = 0;
+        for(int i=0; i < matrix[row].length; i++) {
+        	sum += matrix[row][i];
+        }
+        return sum;
     }
     
     /*
@@ -135,7 +143,13 @@ public class _02_2DArrayPractice {
      */
     public Integer getSumByColumn(int[][] matrix, int col) {
         
-        return null;
+    	int sum = 0;
+        for(int i=0; i < matrix.length; i++) {
+        	if (col<matrix[i].length) {
+        		sum += matrix[i][col];
+        	}
+        }
+        return sum;
     }
     
     /*
