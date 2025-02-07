@@ -14,6 +14,7 @@ public class _00_ArrayDemo {
         names[3] = "Marc";
         names[4] = "Randy";
 
+
         /*
          * Declaring and Initializing an array of ints using a '{' and '}'
          */
