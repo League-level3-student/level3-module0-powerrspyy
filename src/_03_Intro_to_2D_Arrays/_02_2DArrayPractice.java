@@ -172,22 +172,30 @@ public class _02_2DArrayPractice {
      *    boundaries, return null.
      */
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        
+        col++;
+        if (col < matrix[row].length)
+        	return matrix[row][col];
         return null;
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        
+        col--;
+        if (col > 0)
+        	return matrix[row][col];
         return null;
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-        
+        row--;
+        if (row>0)
+        	return matrix[row][col];
         return null;
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-        
+        row++;
+    	if (row < matrix.length)
+    		return matrix[row][col];
         return null;
     }
 }
