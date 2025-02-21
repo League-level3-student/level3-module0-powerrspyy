@@ -44,16 +44,72 @@
  * .woco..
  * .ow.c..
  * .c.....
-*/
+ */
 
 package _07_The_Wrong_Way_Cow;
 
 public class TheWrongWayCow {
 
-    public static int[] findWrongWayCow(final char[][] field) {
-        // Fill in the code to return the [col, row] coordinate position of the
-        // head (letter 'c') of the wrong way cow!
-        
-        return null;
-    }
+	public static int[] findWrongWayCow(final char[][] field) {
+		// Fill in the code to return the [col, row] coordinate position of the
+		// head (letter 'c') of the wrong way cow!
+
+		boolean Top = false;
+		boolean Bottom = false;
+		boolean Left = false;
+		boolean Right = false;
+
+		for(int i = 0; i < field.length; i++) {
+			for(int j = 0; j < field.length; j++) {
+				if(field[i][j] == 'c') {
+					checkForOs(field, j, i);
+				}
+			}
+		}
+
+		return null;
+	}
+
+	public int checkForOs(final char[][] field, int x, int y) {
+
+		int test_x = x;
+		int test_y = y - 1;
+
+		if(test_y > -1) {
+			if(field[test_x][test_y] == 'o') {
+				return 1;
+			}
+		}
+
+		test_y++;
+		test_x++;
+
+		if(test_x < field.length) {
+			if(field[test_x][test_y] == 'o') {
+				return 2;
+			}
+		}
+
+		test_x--;
+		test_y++;
+
+		if(test_y < field[0].length) {
+			if(field[test_x][test_y] == 'o') {
+				return 3;
+			}
+		}
+
+		test_y--;
+		test_x--;
+
+		if(test_x > -1) {
+			if(field[test_x][test_y] == 'o') {
+				return 4;
+			}
+		}
+
+			
+
+		return 0;
+	}
 }
