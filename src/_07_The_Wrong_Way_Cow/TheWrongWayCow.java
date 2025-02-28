@@ -54,57 +54,110 @@ public class TheWrongWayCow {
 		// Fill in the code to return the [col, row] coordinate position of the
 		// head (letter 'c') of the wrong way cow!
 
-		boolean Top = false;
-		boolean Bottom = false;
-		boolean Left = false;
-		boolean Right = false;
-
+		
+		int dir1count = 0;
+		int[] coord1 = new int[2];
+		int dir2count = 0;
+		int[] coord2 = new int[2];
+		int dir3count = 0;
+		int[] coord3 = new int[2];
+		int dir4count = 0;
+		int[] coord4 = new int[2];
+		
 		for(int i = 0; i < field.length; i++) {
-			for(int j = 0; j < field.length; j++) {
+			for(int j = 0; j < field[i].length; j++) {
 				if(field[i][j] == 'c') {
-					checkForOs(field, j, i);
+					
+					int check = checkForOs(field, i, j);
+					System.out.println(check);
+					if (check == 1) {
+						dir1count ++;
+						coord1 = new int[]{j,i};
+					}
+					else if (check == 2) {
+						dir2count ++;
+						coord2 = new int[]{j,i};
+						
+					}
+					else if (check == 3) {
+						dir3count ++;
+						coord3 = new int[]{j,i};
+						
+					}
+					else if (check == 4) {
+						dir4count ++;
+						coord4 = new int[]{j,i};
+						
+					}
+					
+					
 				}
 			}
+		}
+		
+		if(dir1count == 1) {
+			return coord1;
+		}
+		else if(dir2count == 1) {
+			return coord2;
+		}
+		else if(dir3count == 1) {
+			return coord3;
+		}
+		else if(dir4count == 1) {
+			return coord4;
 		}
 
 		return null;
 	}
 
-	public int checkForOs(final char[][] field, int x, int y) {
+	public static int checkForOs(final char[][] field, int x, int y) {
 
 		int test_x = x;
 		int test_y = y - 1;
-
-		if(test_y > -1) {
+// West
+		if(test_y > 0) {
 			if(field[test_x][test_y] == 'o') {
-				return 1;
+				if(field[test_x][test_y - 1] == 'w') {
+					return 1;
+
+				}
 			}
 		}
 
 		test_y++;
 		test_x++;
-
-		if(test_x < field.length) {
+// South
+		if(test_x < field.length - 1) {
 			if(field[test_x][test_y] == 'o') {
-				return 2;
+				if(field[test_x + 1][test_y] == 'w') {
+					return 2;
+
+				}
 			}
 		}
 
 		test_x--;
 		test_y++;
-
-		if(test_y < field[0].length) {
+// East
+		if(test_y < field[test_x].length - 1) {
 			if(field[test_x][test_y] == 'o') {
-				return 3;
+				if(field[test_x][test_y + 1] == 'w') {
+					return 3;
+
+				}
 			}
 		}
 
 		test_y--;
 		test_x--;
-
-		if(test_x > -1) {
+// North
+		if(test_x > 0) {
 			if(field[test_x][test_y] == 'o') {
-				return 4;
+				if(field[test_x - 1][test_y] == 'w') {
+					return 4;
+
+				}
 			}
 		}
 
